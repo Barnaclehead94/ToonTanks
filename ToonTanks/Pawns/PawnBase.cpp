@@ -21,11 +21,6 @@ APawnBase::APawnBase()
 
 	ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
-<<<<<<< HEAD
-
-
-
-
 }
 
 // Called when the game starts or when spawned
@@ -48,8 +43,6 @@ void APawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
-=======
-}
 
 void APawnBase::RotateTurretFunction(FVector LookAtTarget) 
 {
@@ -63,16 +56,11 @@ void APawnBase::RotateTurretFunction(FVector LookAtTarget)
 	TurretMesh->SetWorldRotation(TurretRotation);
 }
 
-<<<<<<< HEAD
 void APawnBase::Fire() 
 {
 	// Get ProjectlileSpawnPoint Location && Rotation-> Spawn Projectile Class at location firing towards rotation
 	UE_LOG(LogTemp, Warning, TEXT("Fire condition success"));
 }
-=======
->>>>>>> 4124d3895b6ec9b59a4a067e6c03623631136ff0
->>>>>>> 8ae67b65d6598da5c781f2e281a9fbc72c46b8a8
-
 void APawnBase::HandleDestruction() 
 {
 	// -- Universal functionality --
