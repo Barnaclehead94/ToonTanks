@@ -14,7 +14,6 @@ class TOONTANKS_API APawnBase : public APawn
 	GENERATED_BODY()
 
 private:
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))	
 	UCapsuleComponent* CapsuleComp;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
@@ -27,5 +26,13 @@ private:
 public:
 	// Sets default values for this pawn's properties
 	APawnBase();
+
+protected:
+
+	void RotateTurretFunction(FVector LookAtTarget);
+
+	void Fire();
+
+	virtual void HandleDestruction(); // virutal specifier alerts us to the nature of this method - is expected to be overriden by a child class
 
 };
