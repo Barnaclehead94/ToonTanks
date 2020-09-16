@@ -21,6 +21,7 @@ APawnBase::APawnBase()
 
 	ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
+<<<<<<< HEAD
 
 
 
@@ -47,4 +48,10 @@ void APawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
+=======
+}
+
+
+
+>>>>>>> 4124d3895b6ec9b59a4a067e6c03623631136ff0
 

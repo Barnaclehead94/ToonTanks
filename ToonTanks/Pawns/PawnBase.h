@@ -14,6 +14,10 @@ class TOONTANKS_API APawnBase : public APawn
 	GENERATED_BODY()
 
 private:
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4124d3895b6ec9b59a4a067e6c03623631136ff0
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))	
 	UCapsuleComponent* CapsuleComp;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
@@ -26,6 +30,7 @@ private:
 public:
 	// Sets default values for this pawn's properties
 	APawnBase();
+<<<<<<< HEAD
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -35,4 +40,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+=======
+
+>>>>>>> 4124d3895b6ec9b59a4a067e6c03623631136ff0
 };
