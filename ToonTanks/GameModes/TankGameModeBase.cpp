@@ -2,27 +2,55 @@
 
 
 #include "TankGameModeBase.h"
+#include "ToonTanks/Pawns/PawnTank.h"
+#include "ToonTanks/Pawns/PawnTurret.h"
+#include "Kismet/GameplayStatics.h"
 
 void ATankGameModeBase::BeginPlay() 
 {
-    // Get references and game win/lost conditions
+    Super::BeginPlay();
 
-    // Call HandleGameStart() to initialise the start countdown, turret activation, pawn check etc.
+
+    HandleGameStart();
 }
 
 void ATankGameModeBase::ActorDied(AActor* DeadActor) 
 {
-    // Check what type of ACtor has died. If Turret, tally. If Player -> go to lost condition.
-    UE_LOG(LogTemp, Warning, TEXT("A Pawn died"));
+    if(DeadActor == PlayerTank)
+    {
+        PlayerTank->HandleDestuction();
+        HandleGameOver(false);
+    }
+    else if(APawnTurret* DestroyedTurret = Cast<APawnTurret>(DeadActor);
+    {
+        DestroyedTurret->HandleDestruction();
+
+        if(--TargetTurrets == 0)
+        {
+            HandleGameOver(true);
+        }
+    }
 }
 void ATankGameModeBase::HandleGameStart() 
 {
-    
+    // Get Turret and Player Pawn details
+    TargetTurrets = GetTargetTurretCount();
+
+    PlayerTank = Cast<APawnTank>(UGameplayStatics::GetPlayerPawn(this, 0));
+
+    GameStart();
 }
 
 void ATankGameModeBase::HandleGameOver(bool PlayerWon) 
 {
-    
+    GameOVer(PlayerWon);
 }
 
 
+
+int32 ATankGameModeBase::GetTargetTurretCount() 
+{
+    TArray<AActor*> TurretActors;
+    UGameplayStatics::GetAllActorsOfClass(GetWorld(), APawnTurret::StaticClass(), TurretActors);
+    return TurretActors.Num();
+}
