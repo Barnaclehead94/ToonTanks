@@ -31,7 +31,8 @@ private:
 public:
 	// Sets default values for this pawn's properties
 	APawnBase();
-	virtual void HandleDestruction(); // virutal specifier alerts us to the nature of this method - is expected to be overriden by a child class
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
 protected:
 
@@ -39,7 +40,13 @@ protected:
 
 	void Fire();
 
+	virtual void HandleDestruction(); // virutal specifier alerts us to the nature of this method - is expected to be overriden by a child class
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
 };
