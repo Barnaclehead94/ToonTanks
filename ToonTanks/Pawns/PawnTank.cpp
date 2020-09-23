@@ -29,7 +29,15 @@ void APawnTank::HandleDestruction()
 {
     Super::HandleDestruction();
     // Hide Player. TODO - Create new function to handle this.
-    Destroy();
+    bIsPlayerAlive = false;
+
+    SetActorHiddenInGame(true);
+    SetActorTickEnabled(false); // both of these save performance - hides actor and stops update() function running every second
+}
+
+bool APawnTank::GetIsPlayerAlive() 
+{
+    return bIsPlayerAlive;
 }
 
 
